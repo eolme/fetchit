@@ -11,7 +11,6 @@ export default function (url, options) {
             }
         }
 
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         request.responseType = options.responseType || '';
         request.withCredentials = options.credentials === 'include';
 
