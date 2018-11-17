@@ -6,13 +6,15 @@ export default function (url, options) {
         request.open(options.method || 'get', url, true);
 
         for (let name in options.headers) {
-            request.setRequestHeader(i, options.headers[name]);
+            if (Object.prototype.hasOwnProperty.call(options.headers, name)) {
+                request.setRequestHeader(name, options.headers[name]);
+            }
         }
 
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         request.responseType = options.responseType || '';
-        request.withCredentials = options.credentials == 'include';
-        
+        request.withCredentials = options.credentials === 'include';
+
         request.onload = () => {
             resolve(response());
         };
@@ -21,13 +23,13 @@ export default function (url, options) {
 
         request.send(options.body || null);
 
-        const response = (function response() {
-            const keys = [],
-                all = [],
-                headers = {};
-            
+        const response = function response() {
+            const keys = [];
+            const all = [];
+            const headers = {};
+
             let header = null;
-            
+
             request.getAllResponseHeaders().replace(/^(.*?):[^\S\n]*([\s\S]*?)$/gm, (m, key, value) => {
                 keys.push(key = key.toLowerCase());
                 all.push([key, value]);
@@ -55,6 +57,6 @@ export default function (url, options) {
                     has: n => n.toLowerCase() in headers
                 }
             };
-        });
+        };
     });
 }
