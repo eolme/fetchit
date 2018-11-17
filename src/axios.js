@@ -47,20 +47,23 @@ axios.defaults = {
     },
 };
 
-axios.prototype = {
-    get(url, config) {
-        return fetchit(url, merge(config, { method: 'get', body: stringifyGet(config.params) }));
-    },
-    post(url, config) {
-        return fetchit(url, merge(config, { method: 'post', body: window.JSON.stringify(config) }));
-    },
-    put(url, config) {
-        return fetchit(url, merge(config, { method: 'put', body: window.JSON.stringify(config) }));
-    },
-    delete(url, config) {
-        return fetchit(url, merge(config, { method: 'delete', body: stringifyGet(config.params) }));
-    }
-};
+axios['get'] = (function axiosGet(url, config) {
+    url = '' + (config.params ? url + '?' + stringifyGet(config.params) : url);
+    return fetchit(url, merge(config, { method: 'get', body: null }));
+});
+
+axios['post'] = (function axiosPost(url, config) {
+    return fetchit(url, merge(config, { method: 'post', body: window.JSON.stringify(config) }));
+});
+
+axios['put'] = (function axiosPut(url, config) {
+    return fetchit(url, merge(config, { method: 'put', body: window.JSON.stringify(config) }));
+});
+
+axios['delete'] = (function axiosDelete(url, config) {
+    url = '' + (config.params ? url + '?' + stringifyGet(config.params) : url);
+    return fetchit(url, merge(config, { method: 'delete', body: null }));
+});
 
 export { axios };
 export default axios;
