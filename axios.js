@@ -31,6 +31,7 @@ const axios = function axios(config) {
     config = config || {};
     config.body = config.data || null;
     config.headers = merge(axios.defaults.headers.common, config.headers);
+    config.credentials = config.withCredentials ? 'include' : null;
 
     if (config.method) {
         config.headers = merge(axios.defaults.headers[('' + config.method).toLowerCase()], config.headers);

@@ -1,4 +1,4 @@
-export default function (url, options) {
+const fetchit = function fetchit(url, options) {
     options = options || {};
     return new window.Promise((resolve, reject) => {
         const request = new XMLHttpRequest();
@@ -58,4 +58,7 @@ export default function (url, options) {
             };
         };
     });
-}
+};
+
+export { fetchit };
+export default fetchit;

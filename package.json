@@ -2,7 +2,7 @@
   "name": "@eolme/fetchit",
   "description": "fetchit",
   "version": "0.1.1",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
