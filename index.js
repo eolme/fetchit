@@ -13,6 +13,7 @@ const fetchit = function fetchit(url, options) {
 
         request.responseType = options.responseType || '';
         request.withCredentials = options.credentials === 'include';
+        request.timeout = options.timeout || 30000;
 
         request.onload = () => {
             resolve(response());

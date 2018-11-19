@@ -27,6 +27,13 @@ const stringifyGet = function stringifyGet(params) {
     return result.join('&');
 };
 
+const createURL = function createURL(url, base) {
+    if (base) {
+        return '' + ((/^https?:\/\//i).test(url) ? url : base + url);
+    }
+    return '' + url;
+};
+
 const axios = function axios(config) {
     config = config || {};
     config.body = config.data || null;
@@ -37,7 +44,7 @@ const axios = function axios(config) {
         config.headers = merge(axios.defaults.headers[('' + config.method).toLowerCase()], config.headers);
     }
 
-    return fetchit(config.url, config);
+    return fetchit(createURL(config.url, config.baseURL), config);
 };
 
 axios.defaults = {
