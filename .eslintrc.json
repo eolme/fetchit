@@ -7,6 +7,10 @@
         "jquery": true,
         "es6": true
     },
+    "plugins": [
+        "json",
+        "markdown"
+    ],
     "globals": {
         "tars": true
     },
