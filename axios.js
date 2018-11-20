@@ -34,6 +34,10 @@ const createURL = function createURL(url, base) {
     return '' + url;
 };
 
+/**
+ * @external axios
+ * @see {@link https://npmjs.com/package/axios/ axios}
+ */
 const axios = function axios(config) {
     config = config || {};
     config.body = config.data || null;

@@ -1,3 +1,16 @@
+/**
+ * Promise based HTTP client with compatible API.
+ * @param {!FetchitURL} url - The server URL that will be used for the request.
+ * @param {?FetchitOptions} [options={}] - The config options for making request.
+ * @param {?HTTPMethod} [options.method='get'] - The HTTP request method to use.
+ * @param {?HTTPHeaders} [options.headers] - The proper HTTP headers.
+ * @param {?HTTPResponseType} [options.responseType=''] - The string value specifying the type of data contained in the response.
+ * @param {?HTTPCredentials} [options.credentials] - The request’s credentials mode.
+ * @param {?number} [options.timeout=30000] - The number of milliseconds that can pass before the request is terminated.
+ * @param {?HTTPBody} [options.body] - The body of data to be sent in the request.
+ *
+ * @returns {Promise<FetchitResponse>} Promise
+ */
 const fetchit = function fetchit(url, options) {
     options = options || {};
     return new window.Promise((resolve, reject) => {
@@ -23,6 +36,9 @@ const fetchit = function fetchit(url, options) {
 
         request.send(options.body || null);
 
+        /**
+         * @returns {FetchitResponse}
+         */
         const response = function response() {
             const keys = [];
             const all = [];
@@ -63,3 +79,67 @@ const fetchit = function fetchit(url, options) {
 
 export { fetchit };
 export default fetchit;
+
+/**
+ * @typedef HTTPResponseType
+ * @type {('arraybuffer'|'blob'|'document'|'json'|'text'|'stream')}
+ */
+
+/**
+ * @typedef HTTPMethod
+ * @type {('get'|'delete'|'head'|'options'|'post'|'put'|'patch')}
+ */
+
+/**
+ * @typedef HTTPHeaders
+ * @type {Object.<!string, !string>}
+ */
+
+/**
+ * @typedef HTTPCredentials
+ * @type {('omit'|'same-origin'|'include')}
+ */
+
+/**
+ * @typedef HTTPBody
+ * @type {(Document|Blob|BufferSource|FormData|URLSearchParams|ReadableStream|USVString)}
+ */
+
+/**
+ * @typedef FetchitURL
+ * @type {(string|URL)}
+ */
+
+/**
+ * @typedef FetchitOptions
+ * @property {?HTTPMethod} method
+ * @property {?HTTPHeaders} headers
+ * @property {?HTTPResponseType} responseType
+ * @property {?HTTPCredentials} credentials
+ * @property {?number} timeout
+ * @property {?HTTPBody} body
+ */
+
+/**
+ * @typedef FetchitHeaders
+ * @property {function(): Array.<string>} keys
+ * @property {function(): Array.<Array.<string>>} entries
+ * @property {function(string): ?string} get
+ * @property {function(string): boolean} has
+ */
+
+/**
+ * @typedef FetchitResponse
+ * @property {boolean} ok
+ * @property {number} status
+ * @property {string} statusText
+ * @property {function(): !FetchitResponse} clone
+ * @property {any} data
+ * @property {FetchitOptions} config
+ * @property {function(): Promise<string>} text
+ * @property {function(): Promise<object>} json
+ * @property {function(): Promise<Blob>} blob
+ * @property {function(): Promise<Document>} xml
+ * @property {function(): Promise<HTMLDocument>} html
+ * @property {FetchitHeaders} headers
+ */
