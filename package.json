@@ -1,7 +1,7 @@
 {
   "name": "@eolme/fetchit",
   "description": "Promise based HTTP client with compatible API.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .json --ext .md",
@@ -11,7 +11,7 @@
     "postcommit": "git update-index --again"
   },
   "husky": {
-    "hooks": {  
+    "hooks": {
       "pre-commit": "lint-staged"
     }
   },
