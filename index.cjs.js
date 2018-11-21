@@ -1,3 +1,7 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
 /**
  * Promise based HTTP client with compatible API.
  * @param {!FetchitURL} url - The server URL that will be used for the request.
@@ -77,8 +81,8 @@ const fetchit = function fetchit(url, options) {
     });
 };
 
-export { fetchit };
-export default fetchit;
+exports.fetchit = fetchit;
+exports.default = fetchit;
 
 /**
  * @typedef HTTPResponseType

@@ -3,12 +3,15 @@
   "description": "Promise based HTTP client with compatible API.",
   "version": "1.0.2",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "lint": "eslint . --ext .json --ext .md",
     "pretest": "npm run lint",
     "test": "echo \"No tests\"",
     "precommit": "lint-staged",
-    "postcommit": "git update-index --again"
+    "postcommit": "git update-index --again",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags"
   },
   "husky": {
     "hooks": {

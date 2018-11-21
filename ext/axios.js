@@ -1,4 +1,4 @@
-import fetchit from './index';
+import fetchit from '../index';
 
 const merge = function merge(target, source) {
     const merged = Object(target);
