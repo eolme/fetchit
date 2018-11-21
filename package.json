@@ -1,7 +1,7 @@
 {
   "name": "@eolme/fetchit",
   "description": "Promise based HTTP client with compatible API.",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
