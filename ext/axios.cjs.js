@@ -15,7 +15,7 @@ const merge = function merge(target, source) {
 };
 
 const encode = function encode(uri) {
-    return window.encodeURIComponent('' + uri).replace(/[!'()*]/g, (c) => {
+    return encodeURIComponent('' + uri).replace(/[!'()*]/g, (c) => {
         return '%' + c.charCodeAt(0).toString(16).toUpperCase();
     });
 };
@@ -73,12 +73,12 @@ axios.get = function axiosGet(url, config) {
 
 axios.post = function axiosPost(url, config) {
     config = config || {};
-    return fetchit(url, merge(config, { method: 'post', body: window.JSON.stringify(config) }));
+    return fetchit(url, merge(config, { method: 'post', body: JSON.stringify(config) }));
 };
 
 axios.put = function axiosPut(url, config) {
     config = config || {};
-    return fetchit(url, merge(config, { method: 'put', body: window.JSON.stringify(config) }));
+    return fetchit(url, merge(config, { method: 'put', body: JSON.stringify(config) }));
 };
 
 axios.delete = function axiosDelete(url, config) {
