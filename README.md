@@ -21,11 +21,7 @@ npm install @eolme/fetchit --save
 
 ### API
 
-```javascript
-fetchit(url).then((response) => {
-	console.log(response);
-});
-```
+Soon.
 
 ### Importing
 
@@ -33,6 +29,10 @@ Simple importing `fetchit` function:
 
 ```javascript
 import { fetchit } from '@eolme/fetchit';
+
+fetchit('npmjs.com').then((response) => {
+    console.log(response);
+});
 ```
 
 If for some reason you need to access the `fetchit` function with another name, it is
@@ -40,6 +40,10 @@ available via exports:
 
 ```javascript
 import fetch from '@eolme/fetchit';
+
+fetch('npmjs.com').then((response) => {
+    console.log(response);
+});
 ```
 
 This approach can be used to, for example, use as replacement for original `fetch` function.
