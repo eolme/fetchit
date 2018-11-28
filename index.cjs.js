@@ -32,14 +32,6 @@ const fetchit = function fetchit(url, options) {
         request.withCredentials = options.credentials === 'include';
         request.timeout = options.timeout || 30000;
 
-        request.onload = () => {
-            resolve(response());
-        };
-
-        request.onerror = reject;
-
-        request.send(options.body || null);
-
         /**
          * @returns {FetchitResponse}
          */
@@ -78,6 +70,14 @@ const fetchit = function fetchit(url, options) {
                 }
             };
         };
+
+        request.onload = () => {
+            resolve(response());
+        };
+
+        request.onerror = reject;
+
+        request.send(options.body || null);
     });
 };
 
