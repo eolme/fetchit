@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const fetchit = require('../index.cjs');
+const fetchit = require('../index.cjs').fetchit;
 
 const merge = function merge(target, source) {
     const merged = Object(target);
