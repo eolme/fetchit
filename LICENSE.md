@@ -1,6 +1,6 @@
 The MIT License
 
-Copyright (c) 2018 Petrov Anton https://github.com/eolme/fetchit
+Copyright (c) 2018 Petrov Anton
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
