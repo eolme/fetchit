@@ -51,7 +51,15 @@ const fetchit = function fetchit(url, options) {
                 statusText: request.statusText,
                 url: request.responseURL,
                 clone: response,
-                data: request.response,
+                data: (() => {
+                    let data = request.response;
+                    if (typeof data === 'string') {
+                        try {
+                            data = JSON.parse(data);
+                        } catch (e) { }
+                    }
+                    return data;
+                })(),
                 config: options,
                 text: () => Promise.resolve(request.responseText),
                 json: () => Promise.resolve(request.responseText).then(JSON.parse),
